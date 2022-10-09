@@ -9,6 +9,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class LionWithoutParametersTest {
     @Before
@@ -33,6 +34,13 @@ public class LionWithoutParametersTest {
         Mockito.when(feline.getFood("Хищник")).thenReturn(food);
         Lion lion = new Lion(feline);
         assertEquals(food, lion.getFood());
+    }
 
+    @Test
+    public void getExceptionTest() {
+        Exception exception = assertThrows(Exception.class, () -> new Lion("Сомец"));
+        String expectedMessage = "Используйте допустимые значения пола животного - самец или самка";
+        String actualMessage = exception.getMessage();
+        assertEquals(expectedMessage, actualMessage);
     }
 }

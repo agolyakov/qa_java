@@ -28,4 +28,10 @@ public class FelineTest {
         String expected = "Кошачьи";
         assertEquals(expected, feline.getFamily());
     }
+
+    @Test
+    public void eatMeatTest() throws Exception {
+        List<String> food = List.of("Животные", "Птицы", "Рыба");
+        assertEquals(food, feline.eatMeat());
+    }
 }
